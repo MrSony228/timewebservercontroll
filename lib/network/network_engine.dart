@@ -1,0 +1,18 @@
+import 'package:timewebservercontroll/network/model/finance/finance_response.dart';
+import 'package:timewebservercontroll/network/model/server/server_response.dart';
+import 'package:timewebservercontroll/network/model/server_action.dart';
+import 'package:timewebservercontroll/network/network_engine_impl.dart';
+
+abstract class NetworkEngine {
+  static const String apiUrl = 'https://api.timeweb.cloud/';
+  static const String jwtToken =
+      'eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjFrYnhacFJNQGJSI0tSbE1xS1lqIn0.eyJ1c2VyIjoiY3owNjE4OCIsInR5cGUiOiJhcGlfa2V5IiwicG9ydGFsX3Rva2VuIjoiNjM5MGM5ZWItYjI0OC00OTQwLTg2NjUtNGIyMjQxMTIyNmIzIiwiYXBpX2tleV9pZCI6IjE3NzFhNmM2LTY3OGQtNDJjNi1iZDBlLTQwNmI0NWNjYjgxMCIsImlhdCI6MTY5NjAwODAzN30.sFwBjfeSDNM41pBY5RxNATwbYQNKW1FbsEXN1wf1LSB3kao0HGFMf_fju_FV-gbm8bxThqzsRQB5FcWCSJURHGD6mdUZjr85Lva5JXZmPqnZoF3pdh5ttl4Ii38h7z_LkMRwwM9_hVHdDckAsScCWzvJRRP9dQZGEiIBQdE2mBuLVVlVvhJBGlKXaNHSFpJOjVLZUJ1Fy5MFO50aZKg2-5IpoPLQzLoT3HSJskVM_13j92p0H5tMMCxPgjaV7ZS_cXkar7atCK6ITaKaaIA5ULV9LLSFPFZwlODRNBG3sM3GcEZg4OpfVy1pVIAXDsHb6vpxeIudY5ebORZYCnSOJAewacH_kh8vNIaV2C38zeA3tdnMJDsd1z8dTuofq7m7zFGUa7CM6TJc5ni1FY8hYiu5vmtUJSXOxJsZMnzYmVkmxBw91wGjJP7QnHio2BjYg5ZBujnuP2Ai_RSYlxrtm4m0YIkkRWOjgJI2DvIA2oCMEmJ4Bd1r-1YbAXdwJxdB';
+
+  factory NetworkEngine.impl() => NetworkEngineImpl();
+
+  Future<ServerResponse> getServerInfo(int serverId);
+
+  Future<FinanceResponse> getFinance();
+
+  Future<void> serverAction(ServerAction action, int serverId);
+}
